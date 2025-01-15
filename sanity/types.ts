@@ -74,7 +74,7 @@ export type Startup = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
+  title?: string;
   slug?: Slug;
   author?: {
     _ref: string;
@@ -85,7 +85,17 @@ export type Startup = {
   views?: number;
   description?: string;
   category?: string;
-  image?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   pitch?: string;
 };
 

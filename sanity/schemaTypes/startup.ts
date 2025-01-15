@@ -6,8 +6,8 @@ export const startup = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "name",
-      title: "Name",
+      name: "title",
+      title: "Title",
       type: "string",
     }),
     defineField({
@@ -15,7 +15,7 @@ export const startup = defineType({
       title: "Slug",
       type: "slug",
       options: {
-        source: "name",
+        source: "title",
       },
     }),
     defineField({
@@ -45,7 +45,6 @@ export const startup = defineType({
       name: "image",
       title: "Image",
       type: "url",
-
       validation: (Rule) => Rule.required(),
     }),
     defineField({
