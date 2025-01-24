@@ -1,9 +1,13 @@
 import Ping from "@/components/Ping";
 import {client} from "@/sanity/lib/client";
 import {STARTUP_VIEWS_QUERY} from "@/sanity/lib/queries";
+import {formatNumber} from "@/lib/utils";
 
 const View = async ({ id }: { id: string }) => {
     const { views: totalViews } = await client.withConfig({ useCdn: false }).fetch(STARTUP_VIEWS_QUERY, {id})
+    const formattedViews = formatNumber(totalViews, "view");
+
+    // TODO: Update the number of views
 
     return (
         <div className={`view-container`}>
@@ -12,7 +16,7 @@ const View = async ({ id }: { id: string }) => {
             </div>
 
             <p className={`view-text`}>
-                <span className={`font-black`}>{totalViews} views</span>
+                <span className={`font-black`}>{formattedViews}</span>
             </p>
         </div>
     )
