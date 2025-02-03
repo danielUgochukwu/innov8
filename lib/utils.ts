@@ -13,7 +13,15 @@ export function formatDate(date: string) {
   });
 }
 
-export function formatNumber(count: number, singular: string, plural?: string): string {
+export function formatNumber(
+  count: number,
+  singular: string,
+  plural?: string
+): string {
   const word = count === 1 ? singular : plural || `${singular}s`;
   return `${count} ${word}`;
+}
+
+export function parseServerActionResponse<T>(response: T) {
+  return JSON.parse(JSON.stringify(response));
 }
