@@ -3,6 +3,12 @@ import Image from "next/image";
 import { auth, signOut, signIn } from "@/auth";
 import { BadgePlus, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Navbar = async () => {
   const session = await auth();
@@ -19,7 +25,15 @@ const Navbar = async () => {
             <>
               <Link href={`/startup/create`}>
                 <span className="max-sm:hidden">Create</span>
-                <BadgePlus className="size-6 sm:hidden" />
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      {" "}
+                      <BadgePlus className="size-6 sm:hidden" />
+                    </TooltipTrigger>
+                    <TooltipContent>Create</TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </Link>
 
               <form
@@ -31,7 +45,15 @@ const Navbar = async () => {
               >
                 <button type="submit">
                   <span className="max-sm:hidden">Logout</span>
-                  <LogOut className="size-6 sm:hidden text-red-500" />
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        {" "}
+                        <LogOut className="size-6 sm:hidden text-red-500" />
+                      </TooltipTrigger>
+                      <TooltipContent>Logout</TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </button>
               </form>
 
